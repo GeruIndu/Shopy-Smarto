@@ -1,11 +1,18 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://127.0.0.1:27017/GeruInstaMart')
+const config = require('config');
+
+const dbgr = require('debug')("development: mongoose"); // It's a debugger . It's used rather than console.log 
+                                                    // It doesnot print anything ultil you set any environment variables 
+                                                    // How to create environment variable: 
+                                                        // set DEBUG=development:*
+
+mongoose.connect(`${config.get("MONGODB_URI")}/GeruInstaMart`) // custom uri 
 .then(() => {
-    console.log("connected");
+    dbgr("connected");
 })
 .catch((err) => {
-    console.log(err);
+    dbgr(err);
 })
 
 module.exports = mongoose.connection;
