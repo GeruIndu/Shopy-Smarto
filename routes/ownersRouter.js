@@ -13,14 +13,19 @@ if(process.env.NODE_ENV == 'development'){
             res.status(502).send("You does not have access to create owner");
         else
         {
-            const {name, email, password, contact} = req.body;
-            const owner = await ownerModel.create({
-                name,
-                email,
-                password,
-                contact,
-            })
-            res.status(201).send(owner);
+            try{
+                const {name, email, password, contact} = req.body;
+                const owner = await ownerModel.create({
+                    name,
+                    email,
+                    password,
+                    contact,
+                })
+                res.status(201).send(owner);
+            }
+            catch{(err) => {
+                res.send(err.message);
+            }}
         }
     })
 }
