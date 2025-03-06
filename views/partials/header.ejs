@@ -10,6 +10,17 @@
 </head>
 
 <body class="font-['helvetica_now_display']">
-    <nav class="w-full fixed top-0 left-0 px-5 py-3">
-        <h3 class="text-xl">Scatch</h3>
+    <nav class="w-full fixed top-0 left-0 px-5 py-3 flex justify-between bg-zinc-100">
+        <h3 class="text-2xl">Shopy Smarto</h3>
+        <% let logout = typeof loggedOut == "undefined" ? true : false %>
+        <% if(logout) { %>
+
+            <div class="flex gap-5">
+                <a href="/shop">Shop</a>
+                <a href="/cart">Cart</a>
+                <a href="">My Account</a>
+                <a href="/users/logout" class="text-red-700">Logout</a>
+            </div>
+
+        <% } %>
     </nav>

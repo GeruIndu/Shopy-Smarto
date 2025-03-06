@@ -13,6 +13,7 @@ module.exports = async (req, res, next) => {
         let user = await userModel.findOne({email: decoded.email}).select("-password");
         req.user = user;
         next();
+        
     } catch (err) {
         req.flash('error', "something went wrong");
         return res.redirect('/');
