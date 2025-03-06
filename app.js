@@ -21,8 +21,10 @@ app.use(expressSession({
     secret: process.env.EXPRESS_SESSION_SECRET,
 }))
 app.use(flash()); // we can't use flash without using express session
-
+const cookieParser = require('cookie-parser');
 app.set('view engine', 'ejs');
+
+app.use(cookieParser());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
